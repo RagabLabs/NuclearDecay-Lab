@@ -1,0 +1,56 @@
+{
+  "release": "2.1.0",
+  "date": "2026-10-14",
+  "baselineCommit": "91650716ab5f88612781c81e8c8cf40215bb64ab",
+  "baselineTests": {
+    "passed": 212,
+    "failed": 0
+  },
+  "releaseTests": {
+    "passed": 309,
+    "failed": 0,
+    "files": 9,
+    "added": 97
+  },
+  "independentOracle": {
+    "decimalDigits": 160,
+    "forwardCases": 19,
+    "inverseInputSets": 3,
+    "inverseQuantities": 7,
+    "byteReproduction": "pass"
+  },
+  "selectedRegressionComparison": {
+    "baselineFailed": 13,
+    "revisedPassed": 13,
+    "note": "Includes disclosure/display requirements, not thirteen independent arithmetic defects."
+  },
+  "executedChecks": {
+    "npm ci": "pass, 213 packages",
+    "npm test": "pass in working and clean copies",
+    "npm run typecheck": "pass",
+    "npm run test:coverage": "pass",
+    "npm run build": "pass",
+    "npm run verify:build": "pass in jsdom, all 12 routes; hosted asset namespace and deep hash entry",
+    "npm audit --audit-level=low": "0 reported vulnerabilities",
+    "sourceBuildByteComparison": "pass, 79 files"
+  },
+  "coverage": {
+    "scope": [
+      "src/science/**",
+      "src/utils/**",
+      "src/data/**"
+    ],
+    "lines": 98.64,
+    "branches": 89.91,
+    "functions": 96.32,
+    "statements": 92.48
+  },
+  "unverified": [
+    "Real browser visual/mobile/desktop interactions",
+    "Actual PNG rasterization and completed browser downloads",
+    "Actual browser print/save-as-PDF dialog",
+    "Real-device accessibility and performance",
+    "GitHub-hosted Actions and public deployment"
+  ],
+  "published": false
+}

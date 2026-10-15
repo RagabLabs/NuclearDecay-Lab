@@ -1,0 +1,75 @@
+{
+  "baselineVersion": "2.0.0",
+  "baselineGitCommit": "91650716ab5f88612781c81e8c8cf40215bb64ab",
+  "date": "2026-10-14",
+  "note": "Selected v2.1 numerical regressions and new UI/disclosure requirements run against baseline source; missing disclosures are not arithmetic errors. Revised assertions pass in v2.1.",
+  "baselinePassed": 0,
+  "baselineFailed": 13,
+  "assertions": [
+    {
+      "test": "1074.5 half-lives: percentage is scaled before subnormal quantization",
+      "baselineStatus": "failed",
+      "failureSummary": "AssertionError: expected 4.94e-322 to be 3.5e-322 // Object.is equality"
+    },
+    {
+      "test": "1075 half-lives: representable percentage survives zero survival fraction",
+      "baselineStatus": "failed",
+      "failureSummary": "AssertionError: expected +0 to be 2.47e-322 // Object.is equality"
+    },
+    {
+      "test": "a mass-fraction division rescues an otherwise-underflowing intermediate",
+      "baselineStatus": "failed",
+      "failureSummary": "ScientificError: Radioisotope mass is below the browser's numerical range."
+    },
+    {
+      "test": "separates C-14 reference precision, stored conversion and the exact half-life normalization",
+      "baselineStatus": "failed",
+      "failureSummary": "Error: expect(element).toHaveValue(5700)\n\nExpected the element to have value:\n  5700\nReceived:\n  5699.87826070"
+    },
+    {
+      "test": "distinguishes an entered 5700 Julian years from exactly one sourced half-life",
+      "baselineStatus": "failed",
+      "failureSummary": "Error: expect(element).toHaveAttribute(\"data-numerical-value\", \"5700\") // element.getAttribute(\"data-numerical-value\") === \"5700\"\n\nExpected the element to have attribute:\n  data-numerical-value=\"5700\"\nReceived:\n  null"
+    },
+    {
+      "test": "uses one C-14 calculation for the screen, arbitrary-time inspection, table and scientific report",
+      "baselineStatus": "failed",
+      "failureSummary": "Error: expect(element).toHaveTextContent()\n\nExpected element to have text content:\n  49.82\nReceived:\n  Remaining activity49.8172MBqafter 5,730 yRemaining fraction49.8172%1.00528 half-lives elapsed"
+    },
+    {
+      "test": "keeps C-14 and I-131 calculations distinct when changing the nuclide",
+      "baselineStatus": "failed",
+      "failureSummary": "Error: expect(element).toHaveTextContent()\n\nExpected element to have text content:\n  8.0233 ± 0.0019 d\nReceived:\n  ¹³¹IIodine-131T½ = 8.0233 dDDEP"
+    },
+    {
+      "test": "does not use rounded range fields as new numerical chart inputs",
+      "baselineStatus": "failed",
+      "failureSummary": "TypeError: Cannot read properties of null (reading 'length')"
+    },
+    {
+      "test": "calculates nuclei-to-mass without an irrelevant half-life or initial activity",
+      "baselineStatus": "failed",
+      "failureSummary": "Error: expect(element).not.toBeInTheDocument()\n\nexpected document not to contain element, found <input\n  autocomplete=\"off\"\n  id=\"_r_t_\"\n  inputmode=\"decimal\"\n  spellcheck=\"false\"\n  type=\"text\"\n  value=\"\"\n/> instead"
+    },
+    {
+      "test": "marks an unrepresentable nuclei count unavailable while keeping a valid mass-input activity",
+      "baselineStatus": "failed",
+      "failureSummary": "Error: expect(element).toHaveTextContent()\n\nExpected element to have text content:\n  Unavailable\nReceived:\n  Activity4.17423e-83MBqRadioactive nuclei0Decay constant6.93147e299s⁻¹Total sample mass1e-294µg"
+    },
+    {
+      "test": "ignores a hidden unused molar-mass field in an activity-only workflow",
+      "baselineStatus": "failed",
+      "failureSummary": "TestingLibraryElementError: Found multiple elements with the role \"alert\"\n\nHere are the matching elements:\n\n"
+    },
+    {
+      "test": "calculates target time independently of an invalid elapsed-time input in the separate forward calculation",
+      "baselineStatus": "failed",
+      "failureSummary": "TestingLibraryElementError: Unable to find an accessible element with the role \"button\" and name \"Show Calculation Steps\"\n\nHere are the accessible roles:\n\n  link:\n\n  Name \"Skip to content\":\n  \u001b[36m<a\u001b[39m\n    \u001b[33mclass\u001b[39m=\u001b[32m\"skip-link\"\u001b[39m\n    \u001b[33mhref\u001b[39m=\u001b[32m\"#main-content\"\u001b[39m\n  \u001b[36m/>\u001b[39m\n\n  Name \"NuclearDecay Lab .\":\n  \u001b[36m<a\u001b[39m\n    \u001b[33mclass\u001b[39m=\u001b[32m\"brand\"\u001b[39m\n    \u001b[33mhref\u001b[39m=\u001b[32m\"#/home\"\u001b[39m\n  \u001b[36m/>\u001b[39m\n\n  Name \"Home\":\n  \u001b[36m<a\u001b[39m\n    \u001b[33mclass\u001b[39m=\u001b[32m\"nav-item \"\u001b[39m\n    \u001b[33mhref\u001b[39m=\u001b[32m\"#/home\"\u001b[39m\n  \u001b[36m/>\u001b[39m\n\n  Name \"Complete Analysis\":\n  \u001b[36m<a\u001b[39m\n    \u001b[33mclass\u001b[39m=\u001b[32m\"nav-item \"\u001b"
+    },
+    {
+      "test": "retains translated precision disclosures and LTR numerical inputs",
+      "baselineStatus": "failed",
+      "failureSummary": "TestingLibraryElementError: Unable to find an element with the text: التفاصيل العددية للقيم المركزية. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.\n\n"
+    }
+  ]
+}

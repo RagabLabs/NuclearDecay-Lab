@@ -1,0 +1,13 @@
+import { useState } from 'react';
+import { Search,ArrowRight } from 'lucide-react';
+import { ISOTOPES } from '../data/isotopes';
+import { Localized,useI18n } from '../i18n';
+import { AR } from '../translations';
+import { PageHeading,Panel,SourceLink } from '../components/ui';
+import { IsotopeReference } from '../components/IsotopeInputs';
+import { measurementText } from '../utils/format';
+export function IsotopeLibrary(){
+ const [query,setQuery]=useState('');const {language,t}=useI18n();
+ const matches=ISOTOPES.filter(i=>[i.name,i.id,i.symbol,String(i.atomicNumber),AR[i.name]].some(s=>s.toLowerCase().includes(query.toLowerCase().trim())));
+ return <Localized><PageHeading title="Isotope library" description={language==='ar'?'ثمانية نظائر موثقة؛ ابحث بالاسم أو الرمز أو العدد الذري واطّلع على المصدر وعدم اليقين.':'Eight traceable reference nuclides. Search by name, symbol or atomic number and inspect provenance.'}/><Panel><div className="field library-search"><label htmlFor="isotope-search">Search isotopes</label><div className="search-input"><Search size={18}/><input id="isotope-search" value={query} onChange={e=>setQuery(e.target.value)} placeholder={t('Search by name, symbol or atomic number.')}/></div></div><div className="library-grid">{matches.map(i=><article className="isotope-library-card" key={i.id}><div className="library-card-top"><span className="atom-symbol">{i.symbol}</span><span className="badge">Z = {i.atomicNumber} · A = {i.massNumber}</span></div><h2>{i.name}</h2><p className="numeric">{i.id}</p><dl><div><dt>Half-life</dt><dd className="numeric">{measurementText(i.halfLifeValue,i.halfLifeUncertainty)} {i.referenceUnit}</dd></div><div><dt>Atomic mass</dt><dd className="numeric">{measurementText(i.atomicMassU,i.atomicMassUncertaintyU)} u</dd></div></dl><div className="source-row"><SourceLink href={i.halfLifeSource}>DDEP half-life</SourceLink><SourceLink href={i.massSource}>AME2020 mass</SourceLink></div><IsotopeReference id={i.id}/><a className="button secondary full" href={`#/analysis?isotope=${encodeURIComponent(i.id)}`}>Use in analysis<ArrowRight size={14}/></a></article>)}</div>{matches.length===0&&<p className="empty-state">No matching isotopes.</p>}</Panel><Panel title="Custom isotope"><p>{language==='ar'?'اختر نصف عمر مخصصًا في أي حاسبة، ثم أدخل الاسم ونصف العمر والكتلة المولية عند الحاجة. لا تُنسب المدخلات المخصصة إلى قاعدة المرجع.':'Choose Custom half-life in any calculator, then supply a name, half-life and optional molar mass. User-supplied values are never attributed to the reference database.'}</p><a className="button primary" href="#/analysis">Analyze a sample<ArrowRight size={14}/></a></Panel></Localized>;
+}
